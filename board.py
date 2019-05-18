@@ -1,11 +1,12 @@
 import copy
+from random import getrandbits
 
 
 class Board:
     def __init__(self, width, height, state=None):
         self.width = width
         self.height = height
-        self.state = self._init_state(
+        self.state = self._random_state(
             width, height) if state is None else state
 
     def render(self):
@@ -53,5 +54,5 @@ class Board:
         return neighbors
 
     @staticmethod
-    def _init_state(width, height):
-        pass
+    def _random_state(width, height):
+        return [[getrandbits(1) for x in range(0, width)] for y in range(0, height)]
