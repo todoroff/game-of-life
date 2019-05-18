@@ -10,9 +10,13 @@ class Board:
             width, height) if state is None else state
 
     def render(self):
-        for y in range(0, height):
-            for x in range(0, width):
-                pass
+        state_string = " " + "=" * self.width + "\n"
+        for y in range(0, self.height):
+            state_string += "|" 
+            for x in range(0, self.width):
+                state_string += "@" if self.state[y][x] == 1 else " "
+            state_string += "|\n"
+        print(state_string)
 
     def next_board_state(self):
         new_state = copy.deepcopy(self.state)
